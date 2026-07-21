@@ -1,53 +1,15 @@
-# PEARC26 Cursor Workshop — Weather Patterns
+# PEARC26 Cursor Workshop Module 3 — Advanced Cursor Features: Weather Patterns
 
-Hands-on workshop using Cursor to explore US weather patterns. Work is organized into steps; **Steps 1–3** are ready.
-
-## Workshop plan
-
-| Step | Focus | Status |
-|---|---|---|
-| **1** | Map wind across the CONUS from a provided weather station dataset | Ready |
-| **2** | Investigate a severe weather event and trace it via station-metadata MCP | Ready |
-| **3** | Author a weather-qc skill and harden the wind map | Ready |
-
----
 
 ## Prerequisites
 
-Complete this setup before starting Step 1. Participant runtime needs **`mcp`** and **`pillow`** (~13 MB of wheels combined; no matplotlib/cartopy).
+Please make sure to have completed the pre-conference installation instructions found in this repository's root README file:
 
-### Offline / limited bandwidth (recommended for the room)
-
-Facilitators: build a wheelhouse once on good network, then share `vendor/wheels` via USB or a local drive:
-
-```bash
-./scripts/build_wheelhouse.sh
-```
-
-Participants:
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install --no-index --find-links=vendor/wheels -r requirements.txt
-```
-
-Optional if you already have [`uv`](https://github.com/astral-sh/uv):
-
-```bash
-uv venv .venv && source .venv/bin/activate
-uv pip install --no-index --find-links=vendor/wheels -r requirements.txt
-```
-
-### Online fallback
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-```
-
-Facilitators regenerating datasets can use `requirements-dev.txt` (pandas/numpy) — not needed during the workshop.
+- [ ] Cursor installed and signed in  
+- [ ] Python 3.10+ available (`python3 --version`)  
+- [ ] Git available (`git --version`)  
+- [ ] This repo cloned  
+- [ ] Module 3 venv created and `pip install -r requirements.txt` succeeded
 
 ---
 
