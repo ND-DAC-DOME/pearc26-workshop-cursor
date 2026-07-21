@@ -5,7 +5,7 @@ Complete these steps **before** the PEARC tutorial session. Conference Wi‑Fi i
 Workshop materials for this segment live under:
 
 ```text
-Module 3: Advanced Cursor Features/
+Module 3 - Advanced Cursor Features/
 ```
 
 ---
@@ -68,20 +68,20 @@ Open the repo folder in Cursor: **File → Open Folder…**
 From the **repository root**:
 
 ```bash
-cd "Module 3: Advanced Cursor Features"
+cd "Module 3 - Advanced Cursor Features"
 python3 -m venv .venv
 source .venv/bin/activate          # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-Participant runtime depends only on the small `mcp` package (used later for station metadata tools). The wind map itself uses the Python standard library plus data bundled in this folder.
+Participant runtime needs `mcp` (station metadata tools) and `pillow` (PNG wind map). Data is bundled in this folder.
 
 ### Offline / USB wheelhouse (if provided)
 
 If facilitators give you a `vendor/wheels` folder (USB or shared drive), prefer:
 
 ```bash
-cd "Module 3: Advanced Cursor Features"
+cd "Module 3 - Advanced Cursor Features"
 python3 -m venv .venv
 source .venv/bin/activate
 pip install --no-index --find-links=vendor/wheels -r requirements.txt
@@ -91,13 +91,13 @@ pip install --no-index --find-links=vendor/wheels -r requirements.txt
 
 ## Smoke test (optional but recommended)
 
-With the venv activated and your shell still in `Module 3: Advanced Cursor Features`:
+With the venv activated and your shell still in `Module 3 - Advanced Cursor Features`:
 
 ```bash
 python scripts/plot_wind_map.py --timestamp 2025-06-11T12:00:00Z
 ```
 
-Open `output/wind_map.svg` in a web browser. You should see a CONUS map with wind barbs.
+Open `output/wind_map.png`. You should see a CONUS map with wind barbs.
 
 You do **not** need to explore the rest of the materials yet — save the hands-on steps for the live session.
 
@@ -112,7 +112,7 @@ Bring a laptop with:
 - [ ] Git available (`git --version`)  
 - [ ] This repo cloned  
 - [ ] Module 3 venv created and `pip install -r requirements.txt` succeeded  
-- [ ] (Optional) Smoke-test SVG map opened successfully  
+- [ ] (Optional) Smoke-test PNG map opened successfully  
 
 If anything fails, arrive **10 minutes early** — we will have backup USB copies of the Module 3 folder and wheels.
 
