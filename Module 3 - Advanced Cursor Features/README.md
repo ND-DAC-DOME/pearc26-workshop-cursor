@@ -125,3 +125,32 @@ python scripts/plot_wind_map.py --timestamp 2025-06-13T22:00:00Z
 
 Compare `output/wind_map.png` to your earlier plot. The Oklahoma storm cell should still appear; the impossible barb should not dominate the map.
 
+
+---
+
+## Step 4 — Project rules (skills vs lasting guidance)
+
+Skills are great for a focused workflow you attach in chat. **Project rules** live under `.cursor/rules/` and give Cursor persistent guidance—optionally scoped to file patterns—so you do not have to `@` a skill every time.
+
+### Author a rule
+
+Open the skeleton at [`.cursor/rules/weather-plotting.mdc.example`](.cursor/rules/weather-plotting.mdc.example). Fill every `TODO` using what you put in the `weather-qc` skill (keep the rule shorter—rules work best as concise must-follow guidance) and rename the file to `weather-plotting.mdc` (remove the `.example` at the end).
+
+You can edit it directly or ask **Agent** mode:
+
+> Help me complete `@.cursor/rules/weather-plotting.mdc` from our weather-qc skill. Keep it concise. It should apply when editing `scripts/plot_*.py`.
+
+Frontmatter already sets `globs: scripts/plot_*.py` so the rule applies when those files are in play (not necessarily on every chat in the repo).
+
+### Use the rule (without attaching the skill)
+
+Start a **new** Agent chat. Open or mention `scripts/plot_wind_map.py`, but **do not** `@` the weather-qc skill. Ask for a small enhancement that should still obey QC—for example:
+
+> `@scripts/plot_wind_map.py` Add a short comment or stderr message near the wind-loading logic reminding maintainers that invalid wind speeds must not be plotted. Follow project rules. Do not weaken QC if it already exists.
+
+Check that the agent follows your rule (and does not invent weather or pull in heavy plotting libraries).
+
+### Optional contrast
+
+In another message, ask the same kind of change **with** `@.cursor/skills/weather-qc/SKILL.md` attached. Discuss with your neighbor: when would you use a **skill** vs a **rule**?
+

@@ -1,0 +1,28 @@
+---
+description: Conventions for weather plotting scripts in this workshop
+globs: scripts/plot_*.py
+alwaysApply: false
+---
+
+# Weather plotting conventions
+
+Project **rule** (not a skill): Cursor can apply this automatically when you
+work on matching files. Complete the TODOs from Steps 2–3 before relying on it.
+
+## Skills vs rules (remember)
+
+- **Skill** (`.cursor/skills/`): detailed playbook you attach / invoke for a workflow
+- **Rule** (`.cursor/rules/`): shorter persistent guidance tied to the project or file globs
+
+## When editing plot scripts
+
+TODO: List must-follow QC behaviors (e.g. invalid wind speeds, never invent data).
+
+## Output and dependencies
+
+TODO: Preferred output format/path, and which libraries are allowed (keep the
+install light — Pillow + stdlib for maps; do not add Cartopy/matplotlib).
+
+## Out of scope
+
+TODO: What this rule should not change (hourly CSV, MCP server, station metadata).
