@@ -9,7 +9,7 @@ Please make sure to have completed the pre-conference installation instructions 
 - [ ] Python 3.10+ available (`python3 --version`)  
 - [ ] Git available (`git --version`)  
 - [ ] This repo cloned  
-- [ ] Module 3 venv created and `pip install -r requirements.txt` succeeded
+- [ ] Root `.venv` created and `pip install -r requirements.txt` succeeded
 
 ---
 
