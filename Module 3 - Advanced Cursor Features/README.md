@@ -154,3 +154,28 @@ Check that the agent follows your rule (and does not invent weather or pull in h
 
 In another message, ask the same kind of change **with** `@.cursor/skills/weather-qc/SKILL.md` attached. Discuss with your neighbor: when would you use a **skill** vs a **rule**?
 
+
+---
+
+## Optional explorations (for fun!)
+
+The week of data includes more than the Oklahoma wind event. Using Ask/Agent (and MCP when useful), see what else you can find—for example:
+
+**Solar Energy Crashes (Monday, 9 June 2025)**
+- How does **solar radiation** evolve across different regions that day?
+- Do any stations show a brief daytime **temperature dip** lined up with a solar crash?
+- Can you map which corridor was darkest?
+- What is the explanation for seing this data?
+
+**Midwest Humidity Pulse (11–12 June)**
+- Look at **humidity** and **dew point** over the midwest—what agricultural weather story fits a hot, muggy midweek pulse?
+
+**Indiana Morning Rain (every day, ~11:00 UTC)**
+- One station reports **100% humidity**, a sharp **temperature drop**, and **heavy precipitation**—at the **same hour every morning**.
+- What do the other nearby statiosn read?
+- What non-meteorological explanation fits a short, clockwork wet burst under blue skies?
+
+**Southwest heat & outages (14–15 June)**
+- Several stations seem to be missing data during the week.
+- How does this correlate with other readings going on around this time?
+- What could explain the correlation between **temperature change/peaks** and the lack of data? 
