@@ -57,25 +57,23 @@ Open the repo folder in Cursor: **File → Open Folder…**
 
 ---
 
-## Set up the Python environment (Module 3)
+## Set up the Python environment (shared)
 
-From the **repository root**:
+Create **one** virtual environment at the **repository root**. It is used for Module 2 and Module 3.
 
 ```bash
-cd "Module 3 - Advanced Cursor Features"
 python3 -m venv .venv
 source .venv/bin/activate          # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-Participant runtime needs `mcp` (station metadata tools) and `pillow` (PNG wind map). Data is bundled in this folder.
+Participant runtime needs `pillow` (PNG wind maps) and `mcp` (Module 3 station metadata tools). Each module bundles its own `data/` folder.
 
 ### Offline / USB wheelhouse (if provided)
 
 If facilitators give you a `vendor/wheels` folder (USB or shared drive), prefer:
 
 ```bash
-cd "Module 3 - Advanced Cursor Features"
 python3 -m venv .venv
 source .venv/bin/activate
 pip install --no-index --find-links=vendor/wheels -r requirements.txt
@@ -85,13 +83,21 @@ pip install --no-index --find-links=vendor/wheels -r requirements.txt
 
 ## Smoke test (optional but recommended)
 
-With the venv activated and your shell still in `Module 3 - Advanced Cursor Features`:
+With the venv activated and your shell at the **repository root**:
 
 ```bash
-python scripts/plot_wind_map.py --timestamp 2025-06-11T12:00:00Z
+python "Module 2 - Cursor Basics/scripts/plot_wind_map.py"
 ```
 
-Open `output/wind_map.png`. You should see a CONUS map with wind barbs.
+Open `Module 2 - Cursor Basics/output/wind_map.png`. You should see a CONUS basemap (wind overlays are added during the live Module 2 session).
+
+You can also spot-check Module 3’s finished map:
+
+```bash
+python "Module 3 - Advanced Cursor Features/scripts/plot_wind_map.py" --timestamp 2025-06-11T12:00:00Z
+```
+
+Open `Module 3 - Advanced Cursor Features/output/wind_map.png`. You should see a CONUS map with wind barbs.
 
 You do **not** need to explore the rest of the materials yet — save the hands-on steps for the live session.
 
@@ -105,10 +111,10 @@ Bring a laptop with:
 - [ ] Python 3.10+ available (`python3 --version`)  
 - [ ] Git available (`git --version`)  
 - [ ] This repo cloned  
-- [ ] Module 3 venv created and `pip install -r requirements.txt` succeeded  
-- [ ] (Optional) Smoke-test PNG map opened successfully  
+- [ ] Root `.venv` created and `pip install -r requirements.txt` succeeded  
+- [ ] (Optional) Module 2 and/or Module 3 smoke-test PNG opened successfully  
 
-If anything fails, arrive **10 minutes early** — we will have backup USB copies of the Module 3 folder and wheels.
+If anything fails, arrive **10 minutes early** — we will have backup USB copies of the workshop folders and wheels.
 
 ---
 
