@@ -3,7 +3,7 @@
     "station-metadata": {
       "command": "${workspaceFolder}/.venv/bin/python",
       "args": [
-        "${workspaceFolder}/scripts/station_metadata_mcp.py"
+        "${workspaceFolder}/Module 3 - Advanced Cursor Features/scripts/station_metadata_mcp.py"
       ]
     }
   }
