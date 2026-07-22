@@ -12,7 +12,24 @@
     "anemometer": "Vaisala WMT700 ultrasonic",
     "barometer": "Vaisala PTB330",
     "hygrometer": "Vaisala HMP155",
-    "datalogger": "ASOS-Next DAQ"
+    "thermometer": "PRT in aspirated radiation shield",
+    "datalogger": "ASOS-Next DAQ",
+    "temperature_sensor": {
+      "operating_range_c": [
+        -60.0,
+        70.0
+      ],
+      "accuracy_c": 0.2,
+      "notes": "Rated continuous ambient operation through +70 C. Summer desert readings in the mid-40s C are within normal operating limits."
+    }
+  },
+  "site_power": {
+    "grid_feed": "utility commercial service",
+    "backup_power": "UPS + on-site standby generator",
+    "ups_runtime_minutes": 45,
+    "generator_autonomy_hours": 18,
+    "reports_during_utility_outage": true,
+    "notes": "Airport/AFB ASOS cabinets stay on generator after brief UPS ride-through. Utility rolling blackouts do not interrupt METAR archival at this site."
   },
   "software": {
     "firmware_id": "asos-next-py-2.4",

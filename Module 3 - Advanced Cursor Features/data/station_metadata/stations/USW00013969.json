@@ -12,7 +12,24 @@
     "anemometer": "Vaisala WAA151 cup (pulse output)",
     "barometer": "Vaisala PTB201A",
     "hygrometer": "Hygro-M1",
-    "datalogger": "LTU-2000"
+    "thermometer": "PRT (legacy aspirated)",
+    "datalogger": "LTU-2000",
+    "temperature_sensor": {
+      "operating_range_c": [
+        -50.0,
+        60.0
+      ],
+      "accuracy_c": 0.5,
+      "notes": "Sensor/electronics rated to +60 C ambient. Observed mid-40s C does not approach thermal shutdown thresholds."
+    }
+  },
+  "site_power": {
+    "grid_feed": "utility commercial service",
+    "backup_power": "UPS + on-site standby generator",
+    "ups_runtime_minutes": 45,
+    "generator_autonomy_hours": 18,
+    "reports_during_utility_outage": true,
+    "notes": "Airport/AFB ASOS cabinets stay on generator after brief UPS ride-through. Utility rolling blackouts do not interrupt METAR archival at this site."
   },
   "software": {
     "firmware_id": "asos-ltu-f77-3.2",

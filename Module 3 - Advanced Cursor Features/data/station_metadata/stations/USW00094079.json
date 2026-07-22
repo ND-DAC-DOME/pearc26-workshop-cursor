@@ -12,7 +12,24 @@
     "anemometer": "Vaisala WAA151 cup",
     "barometer": "Vaisala PTB220",
     "hygrometer": "Vaisala HMP45",
-    "datalogger": "ASOS ACU"
+    "thermometer": "PRT in aspirated radiation shield",
+    "datalogger": "ASOS ACU",
+    "temperature_sensor": {
+      "operating_range_c": [
+        -60.0,
+        70.0
+      ],
+      "accuracy_c": 0.2,
+      "notes": "Rated continuous ambient operation through +70 C. Mid-40s C desert heat is well inside the rated envelope."
+    }
+  },
+  "site_power": {
+    "grid_feed": "utility commercial service",
+    "backup_power": "none",
+    "ups_runtime_minutes": 0,
+    "generator_autonomy_hours": 0,
+    "reports_during_utility_outage": false,
+    "notes": "No standby generator. Site drops offline when utility feeder is shed; hourly archival resumes when commercial power returns."
   },
   "software": {
     "firmware_id": "asos-classic-c-5.1",

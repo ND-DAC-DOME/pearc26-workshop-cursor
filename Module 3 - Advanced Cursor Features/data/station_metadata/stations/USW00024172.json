@@ -12,7 +12,24 @@
     "anemometer": "Climatronics F460",
     "barometer": "Setra 270",
     "hygrometer": "Rotronic HC2",
-    "datalogger": "AWOS-C site controller"
+    "thermometer": "100 ohm PRT",
+    "datalogger": "AWOS-C site controller",
+    "temperature_sensor": {
+      "operating_range_c": [
+        -50.0,
+        65.0
+      ],
+      "accuracy_c": 0.3,
+      "notes": "Rated continuous ambient operation through +65 C. Mid-40s C desert heat is well inside the rated envelope."
+    }
+  },
+  "site_power": {
+    "grid_feed": "utility commercial service",
+    "backup_power": "UPS + on-site standby generator",
+    "ups_runtime_minutes": 45,
+    "generator_autonomy_hours": 18,
+    "reports_during_utility_outage": true,
+    "notes": "Airport/AFB ASOS cabinets stay on generator after brief UPS ride-through. Utility rolling blackouts do not interrupt METAR archival at this site."
   },
   "software": {
     "firmware_id": "awos-c-cpp-1.8",
