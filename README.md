@@ -2,12 +2,6 @@
 
 Complete these steps **before** the PEARC tutorial session. Conference Wi‑Fi is shared and limited (~1 GB across all tutorials/workshops), so please do **not** wait until you are in the room to install or clone.
 
-Workshop materials for this segment live under:
-
-```text
-Module 3 - Advanced Cursor Features/
-```
-
 ---
 
 ## Required software
