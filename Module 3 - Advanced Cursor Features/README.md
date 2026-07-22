@@ -140,7 +140,7 @@ You can edit it directly or ask **Agent** mode:
 
 > Help me complete `@.cursor/rules/weather-plotting.mdc` from our weather-qc skill. Keep it concise. It should apply when editing `scripts/plot_*.py`.
 
-Frontmatter already sets `globs: scripts/plot_*.py` so the rule applies when those files are in play (not necessarily on every chat in the repo).
+Frontmatter already sets `globs: Module*/scripts/plot_*.py` so the rule applies when those files are in play (not necessarily on every chat in the repo).
 
 ### Use the rule (without attaching the skill)
 
