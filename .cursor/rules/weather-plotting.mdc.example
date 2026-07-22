@@ -1,6 +1,6 @@
 ---
 description: Conventions for weather plotting scripts in this workshop
-globs: scripts/plot_*.py
+globs: Module*/scripts/plot_*.py
 alwaysApply: false
 ---
 
