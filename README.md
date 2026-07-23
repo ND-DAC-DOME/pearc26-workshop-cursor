@@ -69,15 +69,8 @@ pip install -r requirements.txt
 
 Participant runtime needs `pillow` (PNG wind maps) and `mcp` (Module 3 station metadata tools). Each module bundles its own `data/` folder.
 
-### Offline / USB wheelhouse (if provided)
+**NOTE**: This repository ships with an MCP server that loads automatically, but it cannot run until the above step is completed. Restarting Cursor after this step is the easiest way to fix this.
 
-If facilitators give you a `vendor/wheels` folder (USB or shared drive), prefer:
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install --no-index --find-links=vendor/wheels -r requirements.txt
-```
 
 ---
 
