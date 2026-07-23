@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
-"""Plot a CONUS basemap for one hour of station weather (PNG).
+"""Plot CONUS wind speed and direction as meteorological wind barbs (PNG).
 
-Module 2 starter: loads Mon–Wed workshop data, draws state outlines, and
-writes output/wind_map.png. Wind overlays are intentionally unfinished for
-the hands-on Cursor exercises. Uses stdlib + Pillow only (no matplotlib/cartopy).
+Reads data/stations.csv and data/weather_hourly.csv, selects one hour, and
+writes output/wind_map.png. Uses stdlib + Pillow only (no matplotlib/cartopy).
 """
 
 from __future__ import annotations
@@ -148,6 +147,35 @@ def draw_states(draw: ImageDraw.ImageDraw, basemap_path: Path, proj, edge_width:
                 draw.line(pts + [pts[0]], fill=LAND_EDGE, width=edge_width)
 
 
+def draw_data_timestamp(
+    draw: ImageDraw.ImageDraw,
+    timestamp: str,
+    *,
+    width: int,
+    height: int,
+    scale: int,
+    font: ImageFont.ImageFont,
+) -> None:
+    # Draw a single centered line near the bottom of the image that lists the
+    # observation date and time for this map.
+    #
+    # `timestamp` is a UTC ISO-8601 string from the dataset, e.g.
+    # "2025-06-10T12:00:00Z". Format it as a readable label such as:
+    #   "Data time (UTC): 2025-06-10 12:00"
+    # (date + hour:minute is enough; seconds optional).
+    #
+    # Place the text horizontally centered. Use textbbox to measure width, then
+    # draw roughly 24 * scale pixels above the bottom edge so the line sits in
+    # the ocean band below the CONUS outline. Use TITLE_COLOR and the provided
+    # `font`.
+    #
+    # If formatting fails, fall back to drawing `timestamp` unchanged.
+    # Do not draw wind glyphs or change the title band here.
+    #
+    # Accept Tab completion to implement the body of this function.
+    pass
+
+
 def plot_wind_map(frame: list[dict], timestamp: str, basemap_path: Path, output_path: Path) -> None:
     # Render at 2x then downscale with LANCZOS for smoother edges
     scale = 2
@@ -164,20 +192,10 @@ def plot_wind_map(frame: list[dict], timestamp: str, basemap_path: Path, output_
     draw = ImageDraw.Draw(img)
     draw_states(draw, basemap_path, proj, edge_width=3 * scale)
 
-    # TODO(Module 2 / Agent): Draw wind for each station in `frame`.
-    # Each row has lon, lat, wind_speed_mps, and wind_direction_deg.
-    # Use `proj(lon, lat)` for pixel coordinates. Stakeholder has not specified
-    # the glyph style yet — implement a reasonable first pass, then refine.
-
-    # Title for the PNG header band (centered above the map).
-    # Intended final string (single line):
-    #   "CONUS Wind Speed & Direction — {timestamp} — {N} stations"
-    # where {timestamp} is the UTC timestamp string already passed into this
-    # function, and {N} is len(frame) (number of stations in this hour).
-    # Do not invent extra units text here; wind glyphs come later via Agent.
-    # Accept Tab completion on the next line to finish the f-string.
-    title = f"CONUS Wind Speed & Direction — "
-
+    title = (
+        f"CONUS Wind Speed & Direction — {timestamp} — "
+        f"{len(frame)} stations — barbs in knots"
+    )
     font_size = 20 * scale
     try:
         font = ImageFont.truetype("Helvetica", font_size)
@@ -190,6 +208,10 @@ def plot_wind_map(frame: list[dict], timestamp: str, basemap_path: Path, output_
     bbox = draw.textbbox((0, 0), title, font=font)
     tw = bbox[2] - bbox[0]
     draw.text(((width - tw) / 2, 12 * scale), title, fill=TITLE_COLOR, font=font)
+
+    draw_data_timestamp(
+        draw, timestamp, width=width, height=height, scale=scale, font=font
+    )
 
     img = img.resize((IMG_WIDTH, IMG_HEIGHT), Image.Resampling.LANCZOS)
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -209,7 +231,7 @@ def main() -> None:
         "--hour-index",
         type=int,
         default=None,
-        help="0-based hour index within the Module 2 dataset (alternative to --timestamp)",
+        help="0-based hour index within the week (alternative to --timestamp)",
     )
     parser.add_argument(
         "--stations",
