@@ -163,14 +163,26 @@ def draw_north_compass(
     #   tip_y       = base_y - 48 * scale   # top of arrowhead
     #   head_base_y = tip_y + 16 * scale    # bottom of arrowhead (just below tip)
     #
-    # Draw in this order, all TITLE_COLOR, stroke ~ max(2, 2 * scale):
-    #   1) Shaft: vertical line from (cx, head_base_y) down to (cx, base_y)
-    #      — do NOT extend the line through the arrowhead.
-    #   2) Arrowhead: a SMALL filled triangle only at the top:
-    #        (cx, tip_y),
-    #        (cx - 10 * scale, head_base_y),
-    #        (cx + 10 * scale, head_base_y)
-    #      Triangle height stays ~16*scale — not a tall "tree" shape.
+    # Pillow ImageDraw.line / .polygon take ONE xy argument: a list of (x, y)
+    # points — same pattern as draw_states above. Do NOT pass each point as a
+    # separate positional argument (that collides with fill=...).
+    #
+    # Draw in this order, all TITLE_COLOR, stroke = max(2, 2 * scale):
+    #   1) Shaft — vertical line; do NOT extend through the arrowhead:
+    #        draw.line(
+    #            [(cx, head_base_y), (cx, base_y)],
+    #            fill=TITLE_COLOR,
+    #            width=max(2, 2 * scale),
+    #        )
+    #   2) Arrowhead — SMALL filled triangle only at the top (height ~16*scale):
+    #        draw.polygon(
+    #            [
+    #                (cx, tip_y),
+    #                (cx - 10 * scale, head_base_y),
+    #                (cx + 10 * scale, head_base_y),
+    #            ],
+    #            fill=TITLE_COLOR,
+    #        )
     #   3) Label "N" with the provided font. Measure with textbbox:
     #        tw = bbox[2] - bbox[0];  th = bbox[3] - bbox[1]
     #      draw.text y is the TOP of the glyphs, so place the letter with a
@@ -182,7 +194,6 @@ def draw_north_compass(
     # No new imports. Do not draw wind glyphs or change the title.
     # Accept Tab completion to implement the body of this function.
     pass
-
 
 def plot_wind_map(frame: list[dict], timestamp: str, basemap_path: Path, output_path: Path) -> None:
     # Render at 2x then downscale with LANCZOS for smoother edges
