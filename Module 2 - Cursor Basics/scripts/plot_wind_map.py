@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Plot CONUS wind speed and direction as meteorological wind barbs (PNG).
+"""Plot a CONUS station wind map for one hour (PNG).
 
 Reads data/stations.csv and data/weather_hourly.csv, selects one hour, and
 writes output/wind_map.png. Uses stdlib + Pillow only (no matplotlib/cartopy).
@@ -147,6 +147,7 @@ def draw_states(draw: ImageDraw.ImageDraw, basemap_path: Path, proj, edge_width:
                 draw.line(pts + [pts[0]], fill=LAND_EDGE, width=edge_width)
 
 
+
 def draw_north_compass(
     draw: ImageDraw.ImageDraw,
     *,
@@ -201,7 +202,7 @@ def plot_wind_map(frame: list[dict], timestamp: str, basemap_path: Path, output_
 
     title = (
         f"CONUS Wind Speed & Direction — {timestamp} — "
-        f"{len(frame)} stations — barbs in knots"
+        f"{len(frame)} stations"
     )
     font_size = 20 * scale
     try:

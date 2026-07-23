@@ -30,7 +30,7 @@ From `Module 2 - Cursor Basics`:
 python scripts/plot_wind_map.py
 ```
 
-Open `output/wind_map.png`. You should see land/ocean, state borders, and a title band. There is **no north arrow** yet and **no wind glyphs**.
+Open `output/wind_map.png`. You should see land/ocean, state borders, and a title band (timestamp + station count). There is **no north arrow** yet and **no wind glyphs**.
 
 Each run plots a **single** timestamp (default: middle of the Mon–Wed window). You can pick another hour if you like:
 
@@ -58,13 +58,13 @@ Open `output/wind_map.png` again. You should see a small north arrow with an `"N
 
 ## Step 3 — Agent: show the wind (first pass)
 
-A stakeholder asked to **show the wind** on the map for the selected hour, but did **not** specify the glyph style.
+A stakeholder asked to **show the wind** on the map for the selected hour. For a quick first draft, use simple markers (colored dots) — meteorological barbs come later, after a checkpoint, when the requirement gets more specific.
 
 1. Switch the chat to **Agent** mode.
 2. Attach `@scripts/plot_wind_map.py` (and data only if needed).
 3. Ask for a reasonable first implementation — for example:
 
-> `@scripts/plot_wind_map.py` Show the wind data on this map for the selected hour. Use the station rows already loaded in `frame` (lon, lat, wind_speed_mps, wind_direction_deg). Pick a clear visual encoding that makes sense for a first draft. Keep using Pillow only — do not add matplotlib or cartopy. Leave `draw_north_compass` alone.
+> `@scripts/plot_wind_map.py` Show the wind data on this map for the selected hour. Use the station rows already loaded in `frame` (lon, lat, wind_speed_mps, wind_direction_deg). For this first draft, use simple colored dots at each station (color and/or size by wind speed). Do **not** implement meteorological wind barbs yet. Keep using Pillow only — do not add matplotlib or cartopy. Leave `draw_north_compass` alone.
 
 4. Accept the changes, save, and re-run:
 
@@ -72,7 +72,7 @@ A stakeholder asked to **show the wind** on the map for the selected hour, but d
 python scripts/plot_wind_map.py
 ```
 
-Open `output/wind_map.png`. You should see wind represented somehow (often colored dots or similar).
+Open `output/wind_map.png`. You should see colored dots (or similar simple markers) for wind — not barbs yet.
 
 ### Checkpoint
 
