@@ -147,31 +147,38 @@ def draw_states(draw: ImageDraw.ImageDraw, basemap_path: Path, proj, edge_width:
                 draw.line(pts + [pts[0]], fill=LAND_EDGE, width=edge_width)
 
 
-def draw_data_timestamp(
+def draw_north_compass(
     draw: ImageDraw.ImageDraw,
-    timestamp: str,
     *,
     width: int,
     height: int,
     scale: int,
     font: ImageFont.ImageFont,
 ) -> None:
-    # Draw a single centered line near the bottom of the image that lists the
-    # observation date and time for this map.
+    # Draw a small north arrow in the lower-left ocean margin (decoration only).
+    # North is toward the top of this map. Pillow y increases downward.
     #
-    # `timestamp` is a UTC ISO-8601 string from the dataset, e.g.
-    # "2025-06-10T12:00:00Z". Format it as a readable label such as:
-    #   "Data time (UTC): 2025-06-10 12:00"
-    # (date + hour:minute is enough; seconds optional).
+    # Anchor: cx = 80 * scale, base_y = height - 64 * scale
+    #   tip_y       = base_y - 48 * scale   # top of arrowhead
+    #   head_base_y = tip_y + 16 * scale    # bottom of arrowhead (just below tip)
     #
-    # Place the text horizontally centered. Use textbbox to measure width, then
-    # draw roughly 24 * scale pixels above the bottom edge so the line sits in
-    # the ocean band below the CONUS outline. Use TITLE_COLOR and the provided
-    # `font`.
+    # Draw in this order, all TITLE_COLOR, stroke ~ max(2, 2 * scale):
+    #   1) Shaft: vertical line from (cx, head_base_y) down to (cx, base_y)
+    #      — do NOT extend the line through the arrowhead.
+    #   2) Arrowhead: a SMALL filled triangle only at the top:
+    #        (cx, tip_y),
+    #        (cx - 10 * scale, head_base_y),
+    #        (cx + 10 * scale, head_base_y)
+    #      Triangle height stays ~16*scale — not a tall "tree" shape.
+    #   3) Label "N" with the provided font. Measure with textbbox:
+    #        tw = bbox[2] - bbox[0];  th = bbox[3] - bbox[1]
+    #      draw.text y is the TOP of the glyphs, so place the letter with a
+    #      clear gap above the tip:
+    #        text_x = cx - tw / 2
+    #        text_y = tip_y - th - 12 * scale
+    #      The "N" must not overlap the arrowhead.
     #
-    # If formatting fails, fall back to drawing `timestamp` unchanged.
-    # Do not draw wind glyphs or change the title band here.
-    #
+    # No new imports. Do not draw wind glyphs or change the title.
     # Accept Tab completion to implement the body of this function.
     pass
 
@@ -209,9 +216,7 @@ def plot_wind_map(frame: list[dict], timestamp: str, basemap_path: Path, output_
     tw = bbox[2] - bbox[0]
     draw.text(((width - tw) / 2, 12 * scale), title, fill=TITLE_COLOR, font=font)
 
-    draw_data_timestamp(
-        draw, timestamp, width=width, height=height, scale=scale, font=font
-    )
+    draw_north_compass(draw, width=width, height=height, scale=scale, font=font)
 
     img = img.resize((IMG_WIDTH, IMG_HEIGHT), Image.Resampling.LANCZOS)
     output_path.parent.mkdir(parents=True, exist_ok=True)
