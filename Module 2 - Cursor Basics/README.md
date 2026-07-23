@@ -22,7 +22,7 @@ cd "Module 2 - Cursor Basics"
 
 ## Step 1 — Run the starter map
 
-This module ships an **incomplete** plotting script: it loads Mon–Wed station data (`2025-06-09` through `2025-06-11`), draws CONUS state outlines, and writes a PNG. Wind overlays are left for the hands-on steps.
+This module ships an **incomplete** plotting script: it loads Mon–Wed station data (`2025-06-09` through `2025-06-11`), draws CONUS state outlines and a title, and writes a PNG. A north-compass helper is stubbed out for Tab completion, and wind overlays are left for the Agent steps.
 
 From `Module 2 - Cursor Basics`:
 
@@ -30,7 +30,7 @@ From `Module 2 - Cursor Basics`:
 python scripts/plot_wind_map.py
 ```
 
-Open `output/wind_map.png`. You should see land/ocean and state borders. The title is incomplete on purpose, and **no wind glyphs** appear yet.
+Open `output/wind_map.png`. You should see land/ocean, state borders, and a title band. There is **no north arrow** yet and **no wind glyphs**.
 
 Each run plots a **single** timestamp (default: middle of the Mon–Wed window). You can pick another hour if you like:
 
@@ -40,19 +40,19 @@ python scripts/plot_wind_map.py --timestamp 2025-06-10T12:00:00Z
 
 ---
 
-## Step 2 — Tab completion (title polish)
+## Step 2 — Tab completion (north compass)
 
-Open `scripts/plot_wind_map.py` and find the incomplete `title = f"..."` line near the end of `plot_wind_map`. A detailed comment above it describes the intended string.
+Open `scripts/plot_wind_map.py` and find `draw_north_compass`. The function body is `pass`, with a detailed comment above it describing the geometry (shaft, small arrowhead, letter `"N"`).
 
-Place the cursor at the end of that incomplete f-string and use **Tab completion** (Cursor Tab / Copilot-style ghost text) to finish it so the title includes the UTC `timestamp` and the station count (`len(frame)`).
-
-Save the file, re-run:
+1. Place the cursor in the function body (on `pass` / the blank line after the comment).
+2. Use **Tab completion** (Cursor Tab / ghost text) to implement the body from the comment. Prefer accepting the suggestion over rewriting it by hand — the point is to practice Tab.
+3. Save and re-run:
 
 ```bash
 python scripts/plot_wind_map.py
 ```
 
-Open `output/wind_map.png` again — the header should now show timestamp and station count.
+Open `output/wind_map.png` again. You should see a small north arrow with an `"N"` in the lower-left ocean margin.
 
 ---
 
@@ -64,7 +64,7 @@ A stakeholder asked to **show the wind** on the map for the selected hour, but d
 2. Attach `@scripts/plot_wind_map.py` (and data only if needed).
 3. Ask for a reasonable first implementation — for example:
 
-> `@scripts/plot_wind_map.py` Show the wind data on this map for the selected hour. Use the station rows already loaded in `frame` (lon, lat, wind_speed_mps, wind_direction_deg). Pick a clear visual encoding that makes sense for a first draft. Keep using Pillow only — do not add matplotlib or cartopy.
+> `@scripts/plot_wind_map.py` Show the wind data on this map for the selected hour. Use the station rows already loaded in `frame` (lon, lat, wind_speed_mps, wind_direction_deg). Pick a clear visual encoding that makes sense for a first draft. Keep using Pillow only — do not add matplotlib or cartopy. Leave `draw_north_compass` alone.
 
 4. Accept the changes, save, and re-run:
 
@@ -89,7 +89,7 @@ After reviewing the map, the stakeholder clarifies the requirement:
 1. **Restore** the checkpoint from Step 3 (undo the first wind encoding).
 2. In **Agent** mode, ask for barbs instead — for example:
 
-> `@scripts/plot_wind_map.py` Replace the wind overlay with meteorological wind barbs. Convert speed to knots for the barb encoding. Direction is meteorological (from which the wind blows). Keep Pillow only; do not add matplotlib or cartopy. Keep the title behavior from Step 2.
+> `@scripts/plot_wind_map.py` Replace the wind overlay with meteorological wind barbs. Convert speed to knots for the barb encoding. Direction is meteorological (from which the wind blows). Keep Pillow only; do not add matplotlib or cartopy. Keep the north compass from Step 2.
 
 3. Save and re-run:
 
@@ -97,14 +97,14 @@ After reviewing the map, the stakeholder clarifies the requirement:
 python scripts/plot_wind_map.py
 ```
 
-Open `output/wind_map.png`. You should see wind barbs across CONUS.
+Open `output/wind_map.png`. You should see wind barbs across CONUS (and still the north arrow).
 
 ---
 
 ## What we practiced
 
 - Running a project script from a shared venv  
-- **Tab completion** for a small, comment-guided edit  
+- **Tab completion** for a small, comment-guided stubbed function  
 - **Agent** mode for a larger feature with a vague request  
 - **Checkpoints / rollback** when requirements change after review  
 
