@@ -9,7 +9,15 @@ Please make sure to have completed the pre-conference installation instructions 
 - [ ] Python 3.10+ available (`python3 --version`)  
 - [ ] Git available (`git --version`)  
 - [ ] This repo cloned  
-- [ ] Module 3 venv created and `pip install -r requirements.txt` succeeded
+- [ ] venv created and `pip install -r requirements.txt` succeeded
+
+### Enable your Virtual Environment
+Don't forget: the commands below assume you've activated your venv from the root and have changed directory into the Module 3 folder:
+
+```bash
+source .venv/bin/activate          # Windows: .venv\Scripts\activate
+cd "Module 3 - Advanced Cursor Features"
+```
 
 ---
 
@@ -65,11 +73,7 @@ Each station has hardware/software metadata (platform, sensors, firmware languag
 
 Switch back to **Agent** mode for this step (Ask mode cannot call MCP tools).
 
-1. This repo ships a project MCP config at [`.cursor/mcp.json`](.cursor/mcp.json) that launches:
-
-```text
-.venv/bin/python scripts/station_metadata_mcp.py
-```
+1. This repo ships a project MCP config at [`.cursor/mcp.json`](.cursor/mcp.json) automatically launches an MCP service. No need to set one up yourself!
 
 2. In Cursor: **Settings → MCP**. Confirm **station-metadata** appears and shows a green/connected status. If needed, click refresh/restart after creating the venv.
 
@@ -164,11 +168,13 @@ The week of data includes more than the Oklahoma wind event. Using Ask/Agent (an
 **Solar Energy Crashes (Monday, 9 June 2025)**
 - How does **solar radiation** evolve across different regions that day?
 - Do any stations show a brief daytime **temperature dip** lined up with a solar crash?
-- Can you map which corridor was darkest?
+- Can you generate a map which visualizes the darkest corridor?
 - What is the explanation for seing this data?
 
 **Midwest Humidity Pulse (11–12 June)**
 - Look at **humidity** and **dew point** over the midwest—what agricultural weather story fits a hot, muggy midweek pulse?
+- Can you generate a map showing relative humidity, or even a series of RH maps?
+   - Bonus points if you can animate it!
 
 **Indiana Morning Rain (every day, ~11:00 UTC)**
 - One station reports **100% humidity**, a sharp **temperature drop**, and **heavy precipitation**—at the **same hour every morning**.
@@ -178,4 +184,5 @@ The week of data includes more than the Oklahoma wind event. Using Ask/Agent (an
 **Southwest heat & outages (14–15 June)**
 - Several stations seem to be missing data during the week.
 - How does this correlate with other readings going on around this time?
-- What could explain the correlation between **temperature change/peaks** and the lack of data? 
+- What could explain the correlation between **temperature change/peaks** and the lack of data?
+- Which tools did you use to help solve this?

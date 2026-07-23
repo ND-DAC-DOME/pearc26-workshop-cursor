@@ -57,37 +57,29 @@ Open the repo folder in Cursor: **File → Open Folder…**
 
 ---
 
-## Set up the Python environment (Module 3)
+## Set up the Python environment (Required for Modules 2 and 3)
 
 From the **repository root**:
 
 ```bash
-cd "Module 3 - Advanced Cursor Features"
 python3 -m venv .venv
 source .venv/bin/activate          # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-Participant runtime needs `mcp` (station metadata tools) and `pillow` (PNG wind map). Data is bundled in this folder.
+Participant runtime needs `mcp` (station metadata tools) and `pillow` (PNG wind map).
 
-### Offline / USB wheelhouse (if provided)
+**NOTE**: This repository ships with an MCP server that loads automatically, but it cannot run until the above step is completed. Restarting Cursor after this step is the easiest way to fix this.
 
-If facilitators give you a `vendor/wheels` folder (USB or shared drive), prefer:
-
-```bash
-cd "Module 3 - Advanced Cursor Features"
-python3 -m venv .venv
-source .venv/bin/activate
-pip install --no-index --find-links=vendor/wheels -r requirements.txt
-```
 
 ---
 
 ## Smoke test (optional but recommended)
 
-With the venv activated and your shell still in `Module 3 - Advanced Cursor Features`:
+With the venv activated:
 
 ```bash
+cd "Module 3 - Advanced Cursor Features"
 python scripts/plot_wind_map.py --timestamp 2025-06-11T12:00:00Z
 ```
 
@@ -105,10 +97,10 @@ Bring a laptop with:
 - [ ] Python 3.10+ available (`python3 --version`)  
 - [ ] Git available (`git --version`)  
 - [ ] This repo cloned  
-- [ ] Module 3 venv created and `pip install -r requirements.txt` succeeded  
+- [ ] venv created and `pip install -r requirements.txt` succeeded  
 - [ ] (Optional) Smoke-test PNG map opened successfully  
 
-If anything fails, arrive **10 minutes early** — we will have backup USB copies of the Module 3 folder and wheels.
+If anything fails, arrive **10 minutes early** — we will have backup USB copies of the repository and can help solve any issues.
 
 ---
 
