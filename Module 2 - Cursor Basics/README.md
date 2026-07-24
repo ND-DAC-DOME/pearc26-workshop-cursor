@@ -20,7 +20,13 @@ cd "Module 2 - Cursor Basics"
 
 ---
 
-## Step 1 — Run the starter map
+## Step 1 — Open the traditional IDE
+
+Open Cursor. It will open in the new **Agents UI**. Click the **IDE** button to open the traditional IDE window, where you will complete the rest of this module.
+
+---
+
+## Step 2 — Run the starter map
 
 This module ships an **incomplete** plotting script: it loads Mon–Wed station data (`2025-06-09` through `2025-06-11`), draws CONUS state outlines and a title, and writes a PNG. A north-compass helper is stubbed out for Tab completion, and wind overlays are left for the Agent steps.
 
@@ -40,7 +46,7 @@ python scripts/plot_wind_map.py --timestamp 2025-06-10T12:00:00Z
 
 ---
 
-## Step 2 — Tab completion (north compass)
+## Step 3 — Tab completion (north compass)
 
 Open `scripts/plot_wind_map.py` and find `draw_north_compass`. The function body is `pass`, with a detailed comment above it describing the geometry (shaft, small arrowhead, letter `"N"`).
 
@@ -71,7 +77,7 @@ For Agent and Plan steps:
 
 ---
 
-## Step 3 — Agent: show the wind (first pass)
+## Step 4 — Agent: show the wind (first pass)
 
 A stakeholder asked to **show the wind** on the map for the selected hour. For a quick first draft, use simple markers (colored dots) — meteorological barbs come later, after a checkpoint, when the requirement gets more specific.
 
@@ -92,11 +98,11 @@ python scripts/plot_wind_map.py
 Open `output/wind_map.png`. You should see colored dots (or similar simple markers) for wind — not barbs yet.
 
 ### Checkpoints
-Note where we are in the chat. After each completed prompt, Cursor automatically creates a checkpoint that you can revert all cahnges back to that moment in the chat. After the next step, we'll come back to this state in the code.
+Note where we are in the chat. After each completed prompt, Cursor automatically creates a checkpoint that you can revert all changes back to that moment in the chat. After the next step, we'll come back to this state in the code.
 
 ---
 
-## Step 4 — Stakeholder clarity, Plan, rollback, then barbs
+## Step 5 — Stakeholder clarity, Plan, rollback, then barbs
 
 After reviewing the map, the stakeholder clarifies the requirement:
 
@@ -116,7 +122,7 @@ Work only inside Module 2. Do not use project rules or skills. Do not read, open
 
 ### Restore, then implement with Agent
 
-1. **Restore** the checkpoint from Step 3 (undo the first-draft wind encoding). Do this by clicking the back arrow in the second chat input. This restores the code to right before we sent this request up. 
+1. **Restore** the checkpoint from Step 4 (undo the first-draft wind encoding). Do this by clicking the back arrow in the second chat input. This restores the code to right before we sent this request up. 
 2. Switch to **Agent** mode.
 3. Attach `Module 2 - Cursor Basics/scripts/plot_wind_map.py` with **@** (if it is not still attached).
 4. Copy-paste prompt:
@@ -137,6 +143,7 @@ Open `output/wind_map.png`. You should see wind barbs across CONUS.
 
 ## What we practiced
 
+- Opening the traditional IDE window from the new **Agents UI**
 - Running a project script from a shared venv  
 - **Tab completion** for a small, comment-guided stubbed function  
 - **Agent** mode for a quick first-draft feature  
