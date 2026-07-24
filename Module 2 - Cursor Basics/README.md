@@ -22,7 +22,7 @@ cd "Module 2 - Cursor Basics"
 
 ## Step 1 — Open the traditional IDE
 
-Open Cursor. It will open in the new **Agents UI**. Click the **IDE** button to open the traditional IDE window, where you will complete the rest of this module.
+Open Cursor. It will open in the new **Agents UI**. Click the **IDE** button in the top right corner to open the traditional IDE window, where you will complete the rest of this module.
 
 ---
 
