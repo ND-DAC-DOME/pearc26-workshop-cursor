@@ -9,15 +9,7 @@ Please make sure to have completed the pre-conference installation instructions 
 - [ ] Python 3.10+ available (`python3 --version`)  
 - [ ] Git available (`git --version`)  
 - [ ] This repo cloned  
-- [ ] venv created and `pip install -r requirements.txt` succeeded
-
-### Enable your Virtual Environment
-Don't forget: the commands below assume you've activated your venv from the root and have changed directory into the Module 3 folder:
-
-```bash
-source .venv/bin/activate          # Windows: .venv\Scripts\activate
-cd "Module 3 - Advanced Cursor Features"
-```
+- [ ] Root `.venv` created and `pip install -r requirements.txt` succeeded
 
 ---
 
