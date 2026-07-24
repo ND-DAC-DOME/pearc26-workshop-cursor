@@ -64,7 +64,6 @@ For Agent and Plan steps:
 
    `Module 2 - Cursor Basics/scripts/plot_wind_map.py`
 
-   Do **not** rely on pasting an `@...` path from this README — text inside code blocks will not create a real attachment.
 
 2. Set the chat mode (**Agent** or **Plan**) as the step says.
 
@@ -92,6 +91,8 @@ python scripts/plot_wind_map.py
 
 Open `output/wind_map.png`. You should see colored dots (or similar simple markers) for wind — not barbs yet.
 
+### Checkpoints
+Note where we are in the chat. After each completed prompt, Cursor automatically creates a checkpoint that you can revert all cahnges back to that moment in the chat. After the next step, we'll come back to this state in the code.
 
 ---
 
@@ -115,7 +116,7 @@ Work only inside Module 2. Do not use project rules or skills. Do not read, open
 
 ### Restore, then implement with Agent
 
-1. **Restore** the checkpoint from Step 3 (undo the first-draft wind encoding).
+1. **Restore** the checkpoint from Step 3 (undo the first-draft wind encoding). Do this by clicking the back arrow in the second chat input. This restores the code to right before we sent this request up. 
 2. Switch to **Agent** mode.
 3. Attach `Module 2 - Cursor Basics/scripts/plot_wind_map.py` with **@** (if it is not still attached).
 4. Copy-paste prompt:
