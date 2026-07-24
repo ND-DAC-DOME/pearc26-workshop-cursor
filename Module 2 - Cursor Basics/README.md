@@ -92,9 +92,6 @@ python scripts/plot_wind_map.py
 
 Open `output/wind_map.png`. You should see colored dots (or similar simple markers) for wind — not barbs yet.
 
-### Checkpoint
-
-When you are happy with this first pass, create a **checkpoint** (Cursor’s checkpoint / restore point for the Agent edits) so you can return to this state after the next change.
 
 ---
 
